@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Stationery Shop</title>
+    <link rel="stylesheet" href="./Styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1{
+            color:rgb(0, 255, 0);
+        }
+        h2 {
+            color: #034efc;
+            text-align: center;
+        }
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        /* Header Section */
+        .header {
+            background-image: linear-gradient(45deg, #2b2b2b, #535353);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        /* About Section */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            background-color: #eaf6ff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+        }
+        .about-image {
+            flex: 1;
+            max-width: 400px;
+            margin: 20px;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        .about-text {
+            flex: 2;
+            max-width: 600px;
+            margin: 20px;
+        }
+        .about-text h2 {
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        /* Services Section */
+        .services-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(45deg, #005eff, #1b006d);
+            color: white;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .services-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .service {
+            margin: 20px 0;
+        }
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        .service p {
+            margin: 5px 0;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>About Us</h1>
+    </div>
+    <div class="container">
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="about-image">
+                <img src="./assets/catogeries/shop1.jpg" alt="Stationery Shop">
+            </div>
+            <div class="about-text">
+                <h2>Welcome to Our Stationery Shop</h2>
+                <p>
+                    At our stationery shop, we are passionate about providing the highest quality stationery products to meet all your needs. From school supplies to office essentials, we have everything to help you stay organized and creative.
+                </p>
+                <p>
+                    Our mission is to deliver exceptional service and products that inspire productivity and creativity. With a wide range of unique and trendy items, we aim to be your one-stop shop for all your stationery requirements.
+                </p>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2 style="color: #fff;">What We Offer</h2>
+            <div class="service">
+                <p class="service-title">✅ High-Quality Products</p>
+                <p>We ensure all our items meet the highest quality standards.</p>
+            </div>
+            <div class="service">
+                <p class="service-title">✅ Affordable Prices</p>
+                <p>Great products at the best prices you can find.</p>
+            </div>
+            <div class="service">
+                <p class="service-title">✅ Exceptional Service</p>
+                <p>Our friendly team is always here to help you.</p>
+            </div>
+        </section>
+    </div>
+    <!--Footer section-->
+    <footer class="footer">
+        <div class="footer-in">
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <p>We provide top-quality stationery and accessories to students in Bokaro Steel City, Jharkhand. Your
+                trusted partner in education!</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <p>Email: studentplace@example.com</p>
+            <p>Phone: +91 12345 67890</p>
+            <p>Address: Bokaro Steel City, Jharkhand</p>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Student Place. All Rights Reserved.
+        </div>
+    </div>
+    </footer>
+</body>
+</html>
