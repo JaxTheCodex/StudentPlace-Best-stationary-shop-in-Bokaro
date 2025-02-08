@@ -28,325 +28,345 @@
     <link rel="stylesheet" href="./Styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- For icons -->
+
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Custom CSS Styling -->
+    <link rel="stylesheet" href="./Styles/style.css">
+    <!-- For icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="./Styles/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- For icons -->
-</head>
+
 
 <body>
-    <nav class="navbar">
-        <div class="nav-in">
-            <div class="navbar-left">
-                <img src="assets/logo.jpg" alt="Logo" class="logo">
-                <span class="shop-name">STUDENT<span class="logo-text"> PLACE</span></span>
+    <!-- Navigation Section starts here -->
+    <nav class="bg-gray-900 text-white p-4 fixed top-0 left-0 w-full z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Left Section -->
+            <div class="flex items-center">
+                <img src="assets/logo.jpg" alt="Logo" class="w-10 h-10 mr-2">
+                <span class="text-lg font-bold">STUDENT<span class="text-cyan-400"> PLACE</span></span>
             </div>
-            <div class="navbar-right">
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#contact-us">Contact Us</a></li>
 
-                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                    <li><a href="#"><i class="fas fa-user"></i></a></li>
-                </ul>
-                <i class="fas fa-bars" id="hamburger-icon"></i>
+            <!-- Right Section -->
+            <div class="md:hidden">
+                <button id="hamburger-icon" class="text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
+
+            <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+                <li><a href="#" class="hover:text-cyan-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-cyan-400">About Us</a></li>
+                <li><a href="#contact-us" class="hover:text-cyan-400">Contact Us</a></li>
+                <li><a href="#" onclick="openModal()"><i class="fab fa-whatsapp text-xl"></i></a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart text-xl"></i></a></li>
+                <li><a href="#"><i class="fas fa-user text-xl"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-white text-2xl">
+            <button id="close-menu" class="absolute top-5 right-5 text-3xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#" class="hover:text-cyan-400">Home</a>
+            <a href="about.html" class="hover:text-cyan-400">About Us</a>
+            <a href="#contact-us" class="hover:text-cyan-400">Contact Us</a>
+            <a href="#" onclick="openModal()"><i class="fab fa-whatsapp text-3xl"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart text-3xl"></i></a>
+            <a href="#"><i class="fas fa-user text-3xl"></i></a>
         </div>
     </nav>
 
-    <!-- Search Input -->
-    <div class="search-container" id="search-container">
-        <input type="text" placeholder="Search..." class="search-input">
+    <!-- Modal Background -->
+    <!-- WhatsApp Modal -->
+    <div id="whatsappModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+        <!-- Modal Content -->
+        <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-96 relative animate-fadeIn">
+            <button onclick="closeModal()"
+                class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl">&times;</button>
+            <h2 class="text-xl font-bold text-green-500 mb-4">Chat on WhatsApp</h2>
+            <p class="text-gray-700 mb-4">Start a conversation with us on WhatsApp!</p>
+            <input type="text" id="message" placeholder="Type your message..."
+                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400">
+            <a id="sendWhatsApp" href="#"
+                class="mt-4 block text-center bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-all">
+                Send Message
+            </a>
+        </div>
     </div>
 
-    <!-- Popup Menu -->
-    <div class="popup-menu" id="popup-menu">
-        <button class="close-btn" id="close-popup"><i class="fas fa-times"></i></button>
-        <ul class="popup-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-            <li><a href="#"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-            <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
-        </ul>
-    </div>
 
     <!--Hero Section starts here-->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-left">
-                <h1 class="hero-heading">STUDENT PLACE</h1>
-                <p class="hero-description">Your one-stop destination for all student needs, from books to gadgets, at
-                    unbeatable prices, is here to transform your academic journey. Discover a wide range of textbooks,
-                    reference materials, and stationery essentials carefully curated to meet every course requirement.
-                    We also offer the latest gadgets, including laptops, tablets, and smartphones, to keep you connected
-                    and productive.</p>
-                <a href="#categories" title="Click to shop now" class="hero-btn">Shop Now</a>
+    <section
+        class="hero bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white min-h-screen flex items-center py-16 px-6 md:px-12 relative overflow-hidden z-0">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <!-- Left Content -->
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-5xl font-extrabold text-cyan-300 mb-4 drop-shadow-lg animate-pulse">
+                    STUDENT PLACE
+                </h1>
+                <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                    Your one-stop destination for all student needs, from books to gadgets, at unbeatable prices.
+                    <span class="block font-semibold text-cyan-400">Upgrade your academic experience today!</span>
+                </p>
+
+                <!-- Animated List -->
+                <ul class="text-gray-400 space-y-2 mb-6">
+                    <li class="flex items-center space-x-2">
+                        <i class="fas fa-book-open text-cyan-400"></i> <span>Wide range of textbooks & reference
+                            materials</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <i class="fas fa-laptop text-cyan-400"></i> <span>Latest gadgets - Laptops, Tablets &
+                            Smartphones</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <i class="fas fa-shopping-cart text-cyan-400"></i> <span>Exclusive student discounts &
+                            offers</span>
+                    </li>
+                </ul>
+
+                <!-- Call-to-action buttons -->
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#categories"
+                        class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                        Shop Now
+                    </a>
+                    <a href="#about"
+                        class="bg-gray-800 hover:bg-gray-700 text-cyan-300 font-bold py-3 px-6 rounded-lg border border-cyan-500 shadow-md transition duration-300">
+                        Learn More
+                    </a>
+                </div>
             </div>
-            <div class="hero-right">
-                <img src="assets/logo.jpg" alt="Shop Logo" class="shop-logo">
+
+            <!-- Right Content -->
+            <div class="md:w-1/2 flex justify-center mt-8 md:mt-0 relative">
+                <img src="assets/logo.jpg" alt="Shop Logo"
+                    class="w-60 h-60 md:w-80 md:h-80 rounded-full shadow-lg border-4 border-cyan-400 rotate-animation hover:paused floating-animation">
+
+                <!-- Decorative Glow Effect -->
+                <div class="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-400 blur-3xl opacity-20"></div>
             </div>
         </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-10 left-10 w-16 h-16 bg-cyan-500 rounded-full blur-3xl opacity-30"></div>
+        <div class="absolute bottom-10 right-10 w-20 h-20 bg-pink-500 rounded-full blur-3xl opacity-30"></div>
     </section>
+
 
     <!--Category section starts here-->
-    <section class="categories" id="categories">
-        <div class="categories-in">
-            <h2 class="categories-heading">Categories</h2>
-            <!-- Search icon -->
-            <div class="search-icon-container">
-                <button id="search-icon" class="search-icon-btn">
-                    Search
-                    <i class="fas fa-search"></i> <!-- Font Awesome icon -->
+    <section id="categories" class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-6">Categories</h2>
+
+            <!-- Search Button -->
+            <div class="flex justify-center mb-6">
+                <input type="text" id="search-input" placeholder="Search categories..."
+                    class="px-4 py-2 rounded-l bg-gray-800 text-white border border-gray-600 focus:outline-none">
+                <button id="search-icon"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r flex items-center">
+                    Search <i class="fas fa-search ml-2"></i>
                 </button>
             </div>
-            <div class="filter-buttons">
-                <button class="filter-btn" data-category="all">All</button>
-                <button class="filter-btn" data-category="printout">Printout</button>
-                <button class="filter-btn" data-category="photograph">Photograph</button>
-                <button class="filter-btn" data-category="stationary">Stationary</button>
-                <button class="filter-btn" data-category="pencil">Pencil</button>
-                <button class="filter-btn" data-category="pens-colors">Pens & Colors</button>
-                <button class="filter-btn" data-category="register">Register</button>
-                <button class="filter-btn" data-category="notebook-copy">Notebook/Copy</button>
-                <button class="filter-btn" data-category="gift-toys">Gift/Toys</button>
-                <button class="filter-btn" data-category="papers">Papers</button>
-                <button class="filter-btn" data-category="lamination">Lamination</button>
-                <button class="filter-btn" data-category="photocopy">Photocopy</button>
+
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-6">
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="all">All</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="printout">Printout</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="photograph">Photograph</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="stationary">Stationary</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="pencil">Pencil</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="pens-colors">Pens & Colors</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="register">Register</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="notebook-copy">Notebook/Copy</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="gift-toys">Gift/Toys</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="papers">Papers</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="lamination">Lamination</button>
+                <button class="filter-btn px-4 py-2 bg-gray-700 rounded hover:bg-gray-600"
+                    data-category="photocopy">Photocopy</button>
             </div>
-            <div class="categories-grid" id="categories-grid">
-                <!-- Sample items for categories -->
-                <div class="category-item" data-category="printout">
-                    <img src="assets/catogeries/print1.jpg" alt="Printout Item">
-                    <h3>Printout Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+            <!-- Categories Grid -->
+            <div id="categories-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Category Items -->
+                <div class="category-item bg-gray-800 p-4 rounded shadow" data-category="printout">
+                    <img src="assets/catogeries/print1.jpg" alt="Printout Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Printout Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="photograph">
-                    <img src="assets/catogeries/photography1.jpg" alt="Photograph Item">
-                    <h3>Photograph Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow" data-category="photograph">
+                    <img src="assets/catogeries/photography1.jpg" alt="Photograph Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Photograph Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="stationary">
-                    <img src="assets/catogeries/tape1.jpg" alt="Stationary Item">
-                    <h3>Stationary Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow" data-category="stationary">
+                    <img src="assets/catogeries/tape1.jpg" alt="Stationary Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Stationary Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="stationary">
-                    <img src="assets/catogeries/scissors1.jpg" alt="Stationary Item">
-                    <h3>Stationary Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow" data-category="pencil">
+                    <img src="assets/catogeries/pencil1.jpg" alt="Pencil Item" class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Pencil Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="stationary">
-                    <img src="assets/catogeries/ruler1.jpg" alt="Stationary Item">
-                    <h3>Stationary Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow hidden" data-category="pens-colors">
+                    <img src="assets/catogeries/pen1.jpg" alt="Pens & Colors Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Pens & Colors Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="stationary">
-                    <img src="assets/catogeries/cutter1.jpg" alt="Stationary Item">
-                    <h3>Stationary Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow hidden" data-category="gift-toys">
+                    <img src="assets/catogeries/toy (1).jpg" alt="Gift/Toys Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Gift/Toys Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="stationary">
-                    <img src="assets/catogeries/scissor3.jpg" alt="Stationary Item">
-                    <h3>Stationary Item 1</h3>
-                    <button class="add-btn">Add</button>
+
+                <div class="category-item bg-gray-800 p-4 rounded shadow hidden" data-category="register">
+                    <img src="assets/catogeries/notebook1.jpg" alt="Register Item"
+                        class="w-full h-40 object-cover rounded">
+                    <h3 class="text-lg font-semibold mt-2">Register Item 1</h3>
+                    <button class="mt-2 bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600">Add</button>
                 </div>
-                <div class="category-item" data-category="pencil">
-                    <img src="assets/catogeries/pencil1.jpg" alt="Pencil Item">
-                    <h3>Pencil Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pencil">
-                    <img src="assets/catogeries/pencil2.jpg" alt="Pencil Item">
-                    <h3>Pencil Item 2</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/pen1.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/pen2.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/pen3.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="gift-toys">
-                    <img src="assets/catogeries/toy (2).jpg" alt="Gift/Toys Item">
-                    <h3>Gift/Toys Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="register">
-                    <img src="assets/catogeries/notebook1.jpg" alt="Register Item">
-                    <h3>Register Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="notebook-copy">
-                    <img src="assets/catogeries/notebook2.jpg" alt="Notebook/Copy Item">
-                    <h3>Notebook/Copy Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="gift-toys">
-                    <img src="assets/catogeries/toy (1).jpeg" alt="Gift/Toys Item">
-                    <h3>Gift/Toys Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="gift-toys">
-                    <img src="assets/catogeries/toy (1).jpg" alt="Gift/Toys Item">
-                    <h3>Gift/Toys Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="gift-toys">
-                    <img src="assets/catogeries/toy (2).jpeg" alt="Gift/Toys Item">
-                    <h3>Gift/Toys Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="gift-toys">
-                    <img src="assets/catogeries/whitener1.jpg" alt="Stationary Item">
-                    <h3>Marker</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/color1.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/fevistick1.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/pen2.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/colorpen1.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/stapler2.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="register">
-                    <img src="assets/catogeries/register1.jpg" alt="register">
-                    <h3>Register 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <div class="category-item" data-category="pens-colors">
-                    <img src="assets/catogeries/tape2.jpg" alt="Pens & Colors Item">
-                    <h3>Pens & Colors Item 1</h3>
-                    <button class="add-btn">Add</button>
-                </div>
-                <!-- Add more items as needed -->
+
+                <!-- Add more items following the same pattern -->
+            </div>
+
+            <!-- Show More Button -->
+            <div class="flex justify-center mt-6">
+                <button id="show-more-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Show
+                    More</button>
             </div>
         </div>
     </section>
 
-    <!--Contact section starts here -->
     <!--Contact Us Section starts here-->
-    <section class="contact-us" id="contact-us">
-        <div class="contact-in">
-            <h2 class="contact-heading">Contact Us</h2>
-            <div class="contact-container">
-                <!-- Left Part: Google Map -->
-                <div class="contact-map">
+    <section id="contact-us" class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Contact Us</h2>
+
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <!-- Left Side: Google Map -->
+                <div class="w-full h-[350px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.2529562218742!2d86.16684517533338!3d23.666910278727386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f423d3422df373%3A0x6230aebc4e2b32e3!2sStudent%20Place!5e0!3m2!1sen!2sin!4v1733827145725!5m2!1sen!2sin"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        width="100%" height="100%" class="border-none" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <!-- Right Part: Contact Form -->
-                <div class="contact-form">
-                    <h3>Send Us an Email</h3>
-                    <form action="mailto:studentplace@example.com" method="post" enctype="text/plain">
-                        <fieldset>
-                            <legend>Sender's info</legend>
+
+                <!-- Right Side: Contact Form -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Send Us an Email</h3>
+                    <form action="mailto:studentplace@example.com" method="post" enctype="text/plain" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="form-group">
-                                <label for="name">Name:</label>
-                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name" class="block text-sm font-medium">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required
+                                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                <label for="email" class="block text-sm font-medium">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Your Email" required
+                                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
-                        </fieldset>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5"
-                                required></textarea>
                         </div>
-                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                        <div class="form-group">
+                            <label for="message" class="block text-sm font-medium">Message</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 transition duration-300 px-6 py-2 text-white font-semibold rounded-md shadow-md">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- WhatsApp Popup -->
-    <div class="whatsapp-popup" id="whatsapp-popup">
-        <button class="close-btn" id="close-whatsapp-popup"><i class="fas fa-times"></i></button>
-        <div class="popup-content">
-            <h3>Start Chat</h3>
-            <p>Chat with us on WhatsApp for inquiries and support!</p>
-            <a href="https://wa.me/911234567890" target="_blank" class="whatsapp-chat-btn">
-                <i class="fab fa-whatsapp"></i> Start Chat
-            </a>
-        </div>
-    </div>
-
-
     <!--Footer section-->
-    <footer class="footer">
-        <div class="footer-in">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <p>We provide top-quality stationery and accessories to students in Bokaro Steel City, Jharkhand. Your
-                    trusted partner in education!</p>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">About Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center md:text-left">
+
+                <!-- About Us -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">About Us</h3>
+                    <p class="text-gray-400 text-sm">
+                        We provide top-quality stationery and accessories to students in Bokaro Steel City, Jharkhand.
+                        Your trusted partner in education!
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition text-xl"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition text-xl"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 transition text-xl"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-300 transition text-xl"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Contact</h3>
+                    <p class="text-gray-400 text-sm">Email: studentplace@example.com</p>
+                    <p class="text-gray-400 text-sm">Phone: +91 12345 67890</p>
+                    <p class="text-gray-400 text-sm">Address: Bokaro Steel City, Jharkhand</p>
                 </div>
             </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <p>Email: studentplace@example.com</p>
-                <p>Phone: +91 12345 67890</p>
-                <p>Address: Bokaro Steel City, Jharkhand</p>
-            </div>
-            <div class="footer-bottom">
+
+            <!-- Footer Bottom -->
+            <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
                 &copy; 2024 Student Place. All Rights Reserved.
             </div>
         </div>
     </footer>
+
     <script src="./js/scripts.js"></script>
 </body>
 

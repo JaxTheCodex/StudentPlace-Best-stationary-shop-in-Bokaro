@@ -1,98 +1,119 @@
-const hamburgerIcon = document.getElementById('hamburger-icon');
-const popupMenu = document.getElementById('popup-menu');
-const closePopup = document.getElementById('close-popup');
-const searchIcon = document.getElementById('search-icon');
-const searchContainer = document.getElementById('search-container');
-
-// Toggle popup menu
-hamburgerIcon.addEventListener('click', () => {
-    popupMenu.style.display = 'block';
+document.getElementById('hamburger-icon').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.remove('hidden');
 });
 
-closePopup.addEventListener('click', () => {
-    popupMenu.style.display = 'none';
+document.getElementById('close-menu').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.add('hidden');
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Select DOM elements
+document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll(".filter-btn");
     const categoryItems = document.querySelectorAll(".category-item");
-    const searchInput = document.querySelector(".search-input");
-    const searchIcon = document.getElementById("search-icon");
-    const searchContainer = document.getElementById("search-container");
+    const showMoreBtn = document.getElementById("show-more-btn");
+    let currentCategory = "all"; // Default category
+    let visibleCount = 4; // Number of initially visible items
 
-    // Ensure elements exist
-    if (!filterButtons || !categoryItems) {
-        console.error("Required elements for filtering are missing!");
-        return;
+    function filterItems(category) {
+        currentCategory = category;
+        visibleCount = 4; // Reset visible count when category changes
+
+        let filteredItems = Array.from(categoryItems).filter(item => 
+            category === "all" || item.getAttribute("data-category") === category
+        );
+
+        // Hide all items first
+        categoryItems.forEach(item => item.style.display = "none");
+
+        // Show only the first 4 items
+        filteredItems.slice(0, visibleCount).forEach(item => item.style.display = "block");
+
+        // Show the "Show More" button only if more than 4 items exist
+        if (filteredItems.length > visibleCount) {
+            showMoreBtn.style.display = "block";
+        } else {
+            showMoreBtn.style.display = "none";
+        }
+
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove("bg-blue-600"));
+
+        // Add active class to clicked button
+        filterButtons.forEach(btn => {
+            if (btn.getAttribute("data-category") === category) {
+                btn.classList.add("bg-blue-600");
+            }
+        });
     }
 
-    // Filter functionality
+    // Add event listener to filter buttons
     filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const category = button.getAttribute("data-category");
-
-            categoryItems.forEach(item => {
-                if (category === "all" || item.getAttribute("data-category") === category) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
+        button.addEventListener("click", function () {
+            let selectedCategory = this.getAttribute("data-category");
+            filterItems(selectedCategory);
         });
     });
 
-    // Toggle search input visibility
-    searchIcon.addEventListener("click", () => {
-        if (searchContainer) {
-            searchContainer.style.display = searchContainer.style.display === "block" ? "none" : "block";
+    // Show more functionality
+    showMoreBtn.addEventListener("click", function () {
+        let filteredItems = Array.from(categoryItems).filter(item => 
+            currentCategory === "all" || item.getAttribute("data-category") === currentCategory
+        );
+
+        let itemsToShow = filteredItems.slice(visibleCount, visibleCount + 4);
+        itemsToShow.forEach(item => item.style.display = "block");
+
+        visibleCount += 4;
+
+        // Hide "Show More" button when all items are displayed
+        if (visibleCount >= filteredItems.length) {
+            showMoreBtn.style.display = "none";
         }
     });
 
     // Search functionality
-    if (searchInput) {
-        searchInput.addEventListener("input", () => {
-            const searchQuery = searchInput.value.toLowerCase();
+    document.getElementById("search-icon").addEventListener("click", function () {
+        let searchQuery = document.getElementById("search-input").value.toLowerCase();
+        let filteredItems = Array.from(categoryItems).filter(item => 
+            item.querySelector("h3").textContent.toLowerCase().includes(searchQuery)
+        );
 
-            categoryItems.forEach(item => {
-                const itemName = item.querySelector("h3").textContent.toLowerCase();
-                item.style.display = itemName.includes(searchQuery) ? "block" : "none";
-            });
-        });
-    }
-});
+        // Hide all items first
+        categoryItems.forEach(item => item.style.display = "none");
 
-// Show WhatsApp Popup
-const whatsappIcon = document.querySelector('.fa-whatsapp');
-const whatsappPopup = document.getElementById('whatsapp-popup');
-const closePopupBtn = document.getElementById('close-whatsapp-popup');
+        // Show only first 4 results that match the search
+        filteredItems.slice(0, 4).forEach(item => item.style.display = "block");
 
-whatsappIcon.addEventListener('click', () => {
-    whatsappPopup.style.display = 'block'; // Show the popup
-});
-
-closePopupBtn.addEventListener('click', () => {
-    whatsappPopup.style.display = 'none'; // Hide the popup
-});
-
-// Search container code 
-document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.querySelector(".search-input");
-    const categoryItems = document.querySelectorAll(".category-item");
-
-    searchInput.addEventListener("input", () => {
-        const searchQuery = searchInput.value.toLowerCase();
-
-        categoryItems.forEach(item => {
-            const itemName = item.querySelector("h3").textContent.toLowerCase();
-
-            if (itemName.includes(searchQuery)) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
-        });
+        // Show the "Show More" button if there are more than 4 results
+        if (filteredItems.length > 4) {
+            showMoreBtn.style.display = "block";
+        } else {
+            showMoreBtn.style.display = "none";
+        }
     });
+
+    // Enable search on "Enter" key press
+    document.getElementById("search-input").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            document.getElementById("search-icon").click();
+        }
+    });
+
+    // Initialize with "All" category
+    filterItems("all");
 });
 
+//Whatapp model 
+
+function openModal() {
+    document.getElementById('whatsappModal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('whatsappModal').classList.add('hidden');
+}
+
+document.getElementById("sendWhatsApp").addEventListener("click", function () {
+    let message = document.getElementById("message").value;
+    let whatsappURL = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+});
