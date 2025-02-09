@@ -114,6 +114,7 @@ function closeModal() {
 
 document.getElementById("sendWhatsApp").addEventListener("click", function () {
     let message = document.getElementById("message").value;
-    let whatsappURL = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+    let whatsappURL = `https://wa.me/916200505664?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, "_blank");
 });
+
